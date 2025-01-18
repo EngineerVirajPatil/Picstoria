@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); 
+const sequelize = require('../config/database');
 const PhotoImage = sequelize.define('PhotoImages', {
   imageUrl: {
     type: DataTypes.STRING,
@@ -14,14 +14,14 @@ const PhotoImage = sequelize.define('PhotoImages', {
     allowNull: true,
   },
   tags: {
-    type: DataTypes.TEXT, 
+    type: DataTypes.TEXT,
     allowNull: false,
     get() {
       const tags = this.getDataValue('tags');
-      return tags ? JSON.parse(tags) : []; 
+      return tags ? JSON.parse(tags) : [];
     },
     set(value) {
-      this.setDataValue('tags', JSON.stringify(value)); 
+      this.setDataValue('tags', JSON.stringify(value));
     },
   },
   userId: {

@@ -15,4 +15,4 @@ const photo = sequelize.define('photo', {
   }
 });
 
-module.exports=photo;
+module.exports = photo;

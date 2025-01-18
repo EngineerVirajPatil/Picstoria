@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const searchHistory= sequelize.define('searchHistory', {
+const searchHistories = sequelize.define('searchHistories', {
   query: DataTypes.STRING,
   userId: {
     type: DataTypes.INTEGER,
@@ -13,4 +13,4 @@ const searchHistory= sequelize.define('searchHistory', {
   }
 });
 
-module.exports = searchHistory;
+module.exports = searchHistories;
