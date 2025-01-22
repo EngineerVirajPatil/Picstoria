@@ -1,6 +1,10 @@
-const user = require('../models/user.js');
+const Users = require('../models/user.js');
 async function doesUserExist(email) {
-    return await user.findOne({ where: { email } });
+    const result= await Users.findOne({ where: { email } });
+    if (typeof result==='boolean'){
+        return null;
+    }
+    return result;
 }
 
 module.exports = doesUserExist;

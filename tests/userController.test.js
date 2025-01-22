@@ -1,7 +1,6 @@
-const { validateUser } = require('../path-to-createNewUser-file');
-const createNewUser = require('../path-to-createNewUser-file');
-const doesUserExist = require('../services/userService');
-const Users = require('../models/user');
+const { validateUser, createNewUser } = require('../controllers/userController.js');
+const doesUserExist = require('../services/userService.js');
+const Users = require('../models/user.js');
 
 jest.mock('../services/userService');
 jest.mock('../models/user');
@@ -102,18 +101,18 @@ describe('createNewUser function', () => {
 
   describe('doesUserExist function', () => {
     test('should return user if email exists', async () => {
-      user.findOne.mockResolvedValue({ email: 'test@example.com' });
+        Users.findOne.mockResolvedValue({ email: 'test@example.com' });
   
       const result = await doesUserExist('test@example.com');
-      expect(user.findOne).toHaveBeenCalledWith({ where: { email: 'test@example.com' } });
+      expect(Users.findOne).toHaveBeenCalledWith({ where: { email: 'test@example.com' } });
       expect(result).toEqual({ email: 'test@example.com' });
     });
   
     test('should return null if email does not exist', async () => {
-      user.findOne.mockResolvedValue(null);
+        Users.findOne.mockResolvedValue(null);
   
       const result = await doesUserExist('nonexistent@example.com');
-      expect(user.findOne).toHaveBeenCalledWith({ where: { email: 'nonexistent@example.com' } });
+      expect( Users.findOne).toHaveBeenCalledWith({ where: { email: 'nonexistent@example.com' } });
       expect(result).toBeNull();
     });
   });
