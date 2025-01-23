@@ -1,7 +1,7 @@
 const { searchPhotos, savedPhotos, saveTags, searchPhotosByTags } = require('../controllers/photoController');
 const { searchImages, savePhotos, saveTagsByPhotoId, searchTags } = require('../services/photoService');
 
-// Mock the service functions
+
 jest.mock('../services/photoService', () => ({
   searchImages: jest.fn(),
   savePhotos: jest.fn(),
